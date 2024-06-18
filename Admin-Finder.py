@@ -32,7 +32,7 @@ site = str(input("\033[1;32m[+] Informe o site alvo:\033[m "))
 wordlists = str(input("\033[1;32m[+] Você deseja utilizar a wordlist padrão? (Y/N)\033[m ")).strip().lower()
 match = False
 if wordlists == "y":
-	print("""\033[1;31m####### [!] VARREDURA INICIADA [!] #######\n\033[m
+	print("""\n\033[1;31m####### [!] VARREDURA INICIADA [!] #######\n\033[m
 """)
 	with open("admin.txt","r") as page:
 		for pages in page:
@@ -66,6 +66,8 @@ if wordlists == "y":
 
 elif wordlists == "n":
 	caminho_wordlist = str(input("\033[1;33m[+] Informe o caminho da wordlist: \033[m")).strip()
+	print("""\n\033[1;31m####### [!] VARREDURA INICIADA [!] #######\n\033[m
+""")
 	try:
 		with open(caminho_wordlist,"r") as page2:
 			for pages2 in page2:

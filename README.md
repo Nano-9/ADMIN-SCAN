@@ -2,7 +2,8 @@
 Script que faz uma varredura no site para encontrar a página de administrador utilizando uma wordlists!
 
 # Print do script
-![20240618_182204](https://github.com/lucas-Dk/ADMIN-SCAN/assets/69327287/c32ae597-3ec1-4646-8128-613393f8880a)
+![20240619_005715](https://github.com/lucas-Dk/ADMIN-SCAN/assets/69327287/d4a93fdc-5271-4487-bbfb-a4bd756c7854)
+
 
 #COMANDOS:
 
@@ -17,5 +18,4 @@ Script que faz uma varredura no site para encontrar a página de administrador u
 Você também pode adicionar uma wordlist se quiser, ao selecionar dentro do script
 
 #SCRIPT PRONTO:
-
-![20240618_182237](https://github.com/lucas-Dk/ADMIN-SCAN/assets/69327287/bf02b63f-9278-4fc3-a9b7-bbce2988fa0f)
+![20240619_005738](https://github.com/lucas-Dk/ADMIN-SCAN/assets/69327287/5c6b2c69-a26d-43d0-9863-1a46a19d19f6)

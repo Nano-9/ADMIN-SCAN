@@ -23,7 +23,7 @@ print("""\033[1;31m
 		|  | --' \ '-'  ||  ||  |\   --.|  |   
 		`--'      `--`--'`--''--' `----'`--'   
                                        \033[m
-		   \033[31m[*]\033[m\033[1m Scaner login admin pages em sites\033[m
+		   \033[31m[*]\033[m\033[1m Scaner login admin pages in websites\033[m
 		   \033[31m[*]\033[m\033[1m Coded by: Nano\033[m
 	           \033[31m[*]\033[m\033[1m Telegram: https://t.me/rdzin9\033[m
 

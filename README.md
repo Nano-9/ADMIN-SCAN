@@ -1,9 +1,11 @@
 # ADMIN-SCAN
 Script que faz uma varredura no site para encontrar a página de administrador utilizando uma wordlists!
+
 Wordlist padrão do script contém mais de 1 Milhão de testes!
 
 # Print do script
-![20240619_005715](https://github.com/lucas-Dk/ADMIN-SCAN/assets/69327287/d4a93fdc-5271-4487-bbfb-a4bd756c7854)
+![20240619_201129](https://github.com/lucas-Dk/ADMIN-SCAN/assets/69327287/50d7a99d-eb71-431e-a227-aa5da24402cd)
+
 
 
 #COMANDOS:

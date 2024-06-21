@@ -22,13 +22,6 @@ def LimparTela():
 
 def ValidEnter(msg=None):
 
-	protocl = [
-
-			"http://",
-			"https://"
-
-]
-
 	validar = re.search(r"^(http:\/\/|https:\/\/)((?:www)?)(?:[a-z0-9]+\.[a-z0-9]+){2}((\.com|\.gov)){0,1}(\.br){0,1}(\/){1}$", msg, flags=re.IGNORECASE)
 	if validar != None:
 		return True
@@ -36,11 +29,6 @@ def ValidEnter(msg=None):
 		return False
 
 def ValidWay(way=None):
-
-	bar = [
-
-			r"\\","/"
-]
 
 	way_valid = re.search(r"^((C:\\|/)?)([a-zA-Z0-9])+(\\|/){1}[a-zA-Z0-9]+(\\|/){1}([a-zA-Z0-9])+(\\|/){1}([a-zA-Z0-9])+(\\|/){1}([a-zA-Z0-9])+\.(txt)$", way)
 	if way_valid != None:
@@ -211,4 +199,4 @@ else:
 						print("\033[1;31m[!]\033[m \033[1mVerifique se o caminho começa com C:\\\n\033[1;31m[!]\033[m e contém o nome do arquivo com final .txt e tente novamente!\033[m\n")
 					elif system == "linux":
 						print("\033[1;31m[!]\033[m \033[1mVerifique se o caminho começa com /\n\033[1;31m[!]\033[m e contém o nome do arquivo com final .txt e tente novamente!\033[m\n")
-					#end
+#end

@@ -187,7 +187,6 @@ else:
 									if conectar2.status_code == 200:
 										finishs = datetime.datetime.now() - starts
 										results = str(finishs)
-										print("\033[1;33m[{}]\033[m \033[1;32m[{}]\033[m \033[1m{}\033[m".format(datetime.datetime.now().strftime("%H:%M:%S"),conectar2.status_code,testar2))
 										match = True
 										print("\n\033[1;33m-----------------------------\033[m")
 										print("\033[1;36M[INFO]\033[m \033[1;32mSITE:\033[m \033[1m{}\033[m".format(site))
@@ -212,3 +211,4 @@ else:
 						print("\033[1;31m[!]\033[m \033[1mVerifique se o caminho começa com C:\\\n\033[1;31m[!]\033[m e contém o nome do arquivo com final .txt e tente novamente!\033[m\n")
 					elif system == "linux":
 						print("\033[1;31m[!]\033[m \033[1mVerifique se o caminho começa com /\n\033[1;31m[!]\033[m e contém o nome do arquivo com final .txt e tente novamente!\033[m\n")
+					#end

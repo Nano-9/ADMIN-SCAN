@@ -16,7 +16,8 @@
   PRINT DO SCRIPT:
 </p></h1>
 
-![20240619_201129](https://github.com/lucas-Dk/ADMIN-SCAN/assets/69327287/50d7a99d-eb71-431e-a227-aa5da24402cd)
+![20240622_000829](https://github.com/lucas-Dk/ADMIN-SCAN/assets/69327287/9ba6984b-1c4a-4d16-a9c4-bdc7fac667db)
+
 
 <h1 align="center"
 <p>

@@ -22,7 +22,7 @@ def LimparTela():
 
 def ValidEnter(msg=None):
 
-	validar = re.search(r"^(http:\/\/|https:\/\/)((?:www)?)(?:[a-z0-9]+\.[a-z0-9]+){2}((\.com|\.gov)){0,1}(\.br){0,1}(\/){1}$", msg, flags=re.IGNORECASE)
+	validar = re.search(r"^(http://|https://){1}(.)+(\/)$", msg, flags=re.IGNORECASE)
 	if validar != None:
 		return True
 	else:
@@ -58,6 +58,8 @@ print("""\033[1;31m
 	           \033[31m[*]\033[m\033[1m Save in: \033[m\033[1;33mFound.txt \033[m
 
 			      \033[1mVersion 1.2\033[m
+
+\033[1;36m[!]\033[m \033[1mEXEMPLO URL: https://example.com/\033[1m
 
 """)
 

@@ -8,6 +8,7 @@ import requests
 import datetime
 import pathlib
 from time import sleep
+from BanerAdm import BanerAdm
 
 def LimparTela():
 
@@ -38,34 +39,12 @@ def ValidWay(way=None):
 
 Persist = requests.Session()
 
-LimparTela()
-print("""\033[1;31m
-                                       
-		  ,---.     ,--.          ,--.         
-		 /  O  \  ,-|  |,--,--,--.`--',--,--,  
-		|  .-.  |' .-. ||        |,--.|      \ 
-		|  | |  |\ `-' ||  |  |  ||  ||  ||  | 
-		`--' `--' `---' `--`--`--'`--'`--''--' 
-		,------.                        ,--.   
-		|  .--. ' ,--,--.,--,--,  ,---. |  |   
-		|  '--' |' ,-.  ||      \| .-. :|  |   
-		|  | --' \ '-'  ||  ||  |\   --.|  |   
-		`--'      `--`--'`--''--' `----'`--'   
-                                       \033[m
-		   \033[31m[*]\033[m\033[1m Scaner of admin page in websites\033[m
-		   \033[31m[*]\033[m\033[1m Coded by: \033[m\033[1;36mNano\033[m
-	           \033[31m[*]\033[m\033[1m Telegram: https://t.me/rdzin9\033[m
-	           \033[31m[*]\033[m\033[1m Save in: \033[m\033[1;33mFound.txt \033[m
-
-			      \033[1mVersion 1.2\033[m
-
-\033[1;36m[!]\033[m \033[1mEXEMPLO URL: https://example.com/\033[1m
-
-""")
+BanerAdm()
 
 site = str(input("\033[1;32m[+] Informe o site alvo:\033[m "))
 wordlists = str(input("\033[1;32m[+] Você deseja utilizar a wordlist padrão? (Y/N)\033[m ")).strip().lower()
 match = False
+Found = False
 
 options = [
 
@@ -148,8 +127,62 @@ else:
 					page.close()
 
 				if not match:
-					print("\n\033[1;33m[{}] \033[m\033[1;31m[NOT FOUND]\033[m \033[1;32mNenhuma página de adminstrador encontrada!\n\033[m".format(datetime.datetime.now().strftime("%H:%M:S")))
-
+					BanerAdm()
+					print("\033[1;33m[{}]\033[m\033[1;32m [*]\033[m \033[1mAbrindo Wordlist de sublinks...\033[m\n".format(datetime.datetime.now().strftime("%H:%M:%S")))
+					sleep(1)
+					caminho_wordlist_2 = os.getcwd()
+					resultado = False
+					proxies = {"27.54.71.234":"8080"}
+					for file in os.listdir(str(caminho_wordlist_2)):
+						if file == "Subdominios.txt":
+							with open(file,"r") as wordlist_2:
+								for subdominio in wordlist_2:
+									if "www." in site:
+										site_2 = site.replace("www.","")
+										subd = subdominio.replace("\n","")
+										mudar = site_2.split("//")
+										resultado = mudar[0]+"//"+subd+"."+mudar[1]
+										try:
+											conectar3 = Persist.get(resultado,headers=headers)
+										except requests.exceptions.ConnectionError:
+											print("\033[1;32m[{}]\033[m\033[1;31m [403]\033[m\033[1m Site:\033[m \033[1;36m{}\033[m | \033[1mStatus:\033[m \033[1;31mError!\033[m".format(datetime.datetime.now().strftime("%H:%M:%S"),resultado))
+										else:
+											if conectar3.status_code == 200:
+												if "www." not in resultado:
+													if "m." not in resultado:
+														print("\n\033[1;33m-----------------------------\033[m")
+														print("\033[1;36m[INFO]\033[m \033[1;32mSITE:\033[m \033[1m{}\033[m".format(site))
+														print("\033[1;36m[INFO]\033[m \033[1;32mPossível Admin page:\033[m \033[1m{}\033[m".format(resultado))
+														print("-----------------------------\033[m\n")
+														with open("Sublinks.txt","a") as save2:
+															save2.write("-----------------\n")
+															save2.write("SITE: {}\n".format(site))
+															save2.write("Página de Adm: {}\n".format(resultado))
+															save2.write("-----------------\n")
+															save2.close()
+									else:
+										subd = subdominio.replace("\n","")
+										mudar = site.split("//")
+										resultado2 = mudar[0]+"//"+subd+"."+mudar[1]
+										try:
+											conectar4 = Persist.get(resultado2,proxies=proxies)
+										except requests.exceptions.ConnectionError:
+											print("\033[1;32m[{}]\033[m\033[1;31m [403]\033[m\033[1m Site:\033[m \033[1;36m{}\033[m | \033[1mStatus:\033[m \033[1;31mError!\033[m".format(datetime.datetime.now().strftime("%H:%M:%S"),resultado2))
+										else:
+											if conectar4.status_code == 200:
+												if "www." not in resultado:
+													if "m." not in resultado:
+														print("\n\033[1;33m-----------------------------\033[m")
+														print("\033[1;36m[INFO]\033[m \033[1;32mSITE:\033[m \033[1m{}\033[m".format(site))
+														print("\033[1;36m[INFO]\033[m \033[1;32mPossível Admin page:\033[m \033[1m{}\033[m".format(resultado))
+														print("-----------------------------\033[m\n")
+														with open("Sublinks.txt","a") as save3:
+															save3.write("-----------------\n")
+															save3.write("SITE: {}\n".format(site))
+															save3.write("Página de Adm: {}\n".format(resultado))
+															save3.write("-----------------\n")
+															save3.close()
+			
 			elif wordlists == "n":
 				caminho_wordlist = str(input("\033[1;33m[+] Informe o caminho + nome da wordlist: \033[m")).strip()
 				exists = ValidWay(way=caminho_wordlist)
@@ -179,8 +212,8 @@ else:
 										results = str(finishs)
 										match = True
 										print("\n\033[1;33m-----------------------------\033[m")
-										print("\033[1;36M[INFO]\033[m \033[1;32mSITE:\033[m \033[1m{}\033[m".format(site))
-										print("\033[1;36M[INFO]\033[m \033[1;32mAdmin Page: :\033[m \033[1m{}\033[m".format(testar2))
+										print("\033[1;36m[INFO]\033[m \033[1;32mSITE:\033[m \033[1m{}\033[m".format(site))
+										print("\033[1;36m[INFO]\033[m \033[1;32mAdmin Page: :\033[m \033[1m{}\033[m".format(testar2))
 										print("-----------------------------\033[m\n")
 										with open("Found.txt","a") as save:
 											save.write("-----------------\n")
@@ -192,13 +225,70 @@ else:
 										print("\033[1;33m[{}]\033[m \033[1;31m[{}]\033[m \033[1m{}\033[m".format(datetime.datetime.now().strftime("%H:%M:%S"),conectar2.status_code,testar2))
 							page2.close()
 							if not match:
-								print("\n\033[1;33m[{}]\033[m\033[1;31m[NOT FOUND]\033[m \033[1;32mNenhuma página de adminstrador encontrada!\n\033[m".format(datetime.datetime.now().strftime("%H:%M:%S")))
+								BanerAdm()
+								print("\033[1;33m[{}]\033[m\033[1;32m [*]\033[m \033[1mAbrindo Wordlist de sublinks...\033[m\n".format(datetime.datetime.now().strftime("%H:%M:%S")))
+								sleep(1)
+								caminho_wordlist_2 = os.getcwd()
+								resultado = False
+								proxies = {"27.54.71.234":"8080"}
+								for file in os.listdir(str(caminho_wordlist_2)):
+									if file == "Subdominios.txt":
+										with open(file,"r") as wordlist_2:
+											for subdominio in wordlist_2:
+												if "www." in site:
+													site_2 = site.replace("www.","")
+													subd = subdominio.replace("\n","")
+													mudar = site_2.split("//")
+													resultado = mudar[0]+"//"+subd+"."+mudar[1]
+													try:
+														conectar3 = Persist.get(resultado,headers=headers)
+													except requests.exceptions.ConnectionError:
+														print("\033[1;32m[{}]\033[m\033[1;31m [403]\033[m\033[1m Site:\033[m \033[1;36m{}\033[m | \033[1mStatus:\033[m \033[1;31mError!\033[m".format(datetime.datetime.now().strftime("%H:%M:%S"),resultado))
+													else:
+														if conectar3.status_code == 200:
+															if "www." not in resultado:
+																if "m." not in resultado:
+																	print("\n\033[1;33m-----------------------------\033[m")
+																	print("\033[1;36m[INFO]\033[m \033[1;32mSITE:\033[m \033[1m{}\033[m".format(site))
+																	print("\033[1;36m[INFO]\033[m \033[1;32mPossível Admin page:\033[m \033[1m{}\033[m".format(resultado))
+																	print("-----------------------------\033[m\n")
+																	with open("Sublinks.txt","a") as save2:
+																		save2.write("-----------------\n")
+																		save2.write("SITE: {}\n".format(site))
+																		save2.write("Página de Adm: {}\n".format(resultado))
+																		save2.write("-----------------\n")
+																		save2.close()
+												else:
+													subd = subdominio.replace("\n","")
+													mudar = site.split("//")
+													resultado2 = mudar[0]+"//"+subd+"."+mudar[1]
+													try:
+														conectar4 = Persist.get(resultado2,proxies=proxies)
+													except requests.exceptions.ConnectionError:
+														print("\033[1;32m[{}]\033[m\033[1;31m [403]\033[m\033[1m Site:\033[m \033[1;36m{}\033[m | \033[1mStatus:\033[m \033[1;31mError!\033[m".format(datetime.datetime.now().strftime("%H:%M:%S"),resultado2))
+													else:
+														if conectar4.status_code == 200:
+															if "www." not in resultado:
+																if "m." not in resultado:
+																	print("\n\033[1;33m-----------------------------\033[m")
+																	print("\033[1;36m[INFO]\033[m \033[1;32mSITE:\033[m \033[1m{}\033[m".format(site))
+																	print("\033[1;36m[INFO]\033[m \033[1;32mPossível Admin page:\033[m \033[1m{}\033[m".format(resultado))
+																	print("-----------------------------\033[m\n")
+																	with open("Sublinks.txt","a") as save3:
+																		save3.write("-----------------\n")
+																		save3.write("SITE: {}\n".format(site))
+																		save3.write("Página de Adm: {}\n".format(resultado))
+																		save3.write("-----------------\n")
+																		save3.close()
+
 					except FileNotFoundError:
 						print("\033[1;31m[!] Arquivo {} não encontrado!\033[m".format(caminho_wordlist))
 						sys.exit()
 				else:
-					if system == "win32":
+					system2 = sys.platform
+					if system2 == "win32":
 						print("\033[1;31m[!]\033[m \033[1mVerifique se o caminho começa com C:\\\n\033[1;31m[!]\033[m e contém o nome do arquivo com final .txt e tente novamente!\033[m\n")
 					elif system == "linux":
 						print("\033[1;31m[!]\033[m \033[1mVerifique se o caminho começa com /\n\033[1;31m[!]\033[m e contém o nome do arquivo com final .txt e tente novamente!\033[m\n")
+
 #end

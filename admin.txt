@@ -87,7 +87,6 @@ admincontrol.php
 admin/adminLogin.html
 adminLogin.html
 admin/adminLogin.html
-home.html
 rcjakar/admin/login.php
 adminarea/index.html
 adminarea/admin.html
@@ -125,7 +124,6 @@ panel-administracion/login.php
 wp-login.php
 adminLogin.php
 admin/adminLogin.php
-home.php
 admin.php
 adminarea/index.php
 adminarea/admin.php
@@ -714,7 +712,6 @@ panel-administracion/login.cgi
 wp-login.cgi
 adminLogin.cgi
 admin/adminLogin.cgi
-home.cgi
 admin.cgi
 adminarea/index.cgi
 adminarea/admin.cgi
@@ -1759,7 +1756,6 @@ panel-administracion/login.cfm
 wp-login.cfm
 adminLogin.cfm
 admin/adminLogin.cfm
-home.cfm
 adminarea/index.cfm
 adminarea/admin.cfm
 adminarea/login.cfm
@@ -1827,7 +1823,6 @@ panel-administracion/login.js
 wp-login.js
 adminLogin.js
 admin/adminLogin.js
-home.js
 adminarea/index.js
 adminarea/admin.js
 adminarea/login.js

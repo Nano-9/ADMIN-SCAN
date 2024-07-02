@@ -133,6 +133,9 @@ else:
 					caminho_wordlist_2 = os.getcwd()
 					resultado = False
 					proxies = {"27.54.71.234":"8080"}
+					size_subs1 = open("Subdominios.txt","r").readlines()
+					print("\033[1;32m[*]\033[m\033[1;m Wordlist carregada com: {} tentativas!\033[m\n".format(len(size_subs1)))
+					sleep(1)
 					for file in os.listdir(str(caminho_wordlist_2)):
 						if file == "Subdominios.txt":
 							with open(file,"r") as wordlist_2:
@@ -231,6 +234,9 @@ else:
 								caminho_wordlist_2 = os.getcwd()
 								resultado = False
 								proxies = {"27.54.71.234":"8080"}
+								size_subs2 = open("Subdominios.txt","r").readlines()
+								print("\033[1;32m[*]\033[m\033[1;m Wordlist carregada com: {} tentativas!\033[m\n".format(len(size_subs2)))
+								sleep(1)
 								for file in os.listdir(str(caminho_wordlist_2)):
 									if file == "Subdominios.txt":
 										with open(file,"r") as wordlist_2:

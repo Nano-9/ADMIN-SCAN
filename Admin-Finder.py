@@ -88,9 +88,8 @@ else:
 			if wordlists == "y":
 
 				size = open("admin.txt","r")
-				wordlist_size = len(size.read())
-				print("\n\033[1;36m[*]\033[m \033[1;32mCarregado\033[m \033[1;33m{}\033[m \033[1;32murl na wordlist!\033[m".format(wordlist_size))
-				size.close()
+				wordlist_size = len(size.readlines())
+				print("\n\033[1;36m[*]\033[m \033[1;32mWordlist carregada com\033[m \033[1;33m{}\033[m \033[1;32mtentativas!\033[m".format(wordlist_size))
 				sleep(1)
 				print("\033[1;36m[*] \033[m\033[1;32mIniciado as\033[m \033[1;33m{}\033[m\n".format(datetime.datetime.now().strftime("%H:%M:%S")))
 				start = datetime.datetime.now()
@@ -296,5 +295,4 @@ else:
 						print("\033[1;31m[!]\033[m \033[1mVerifique se o caminho começa com C:\\\n\033[1;31m[!]\033[m e contém o nome do arquivo com final .txt e tente novamente!\033[m\n")
 					elif system == "linux":
 						print("\033[1;31m[!]\033[m \033[1mVerifique se o caminho começa com /\n\033[1;31m[!]\033[m e contém o nome do arquivo com final .txt e tente novamente!\033[m\n")
-
 #end

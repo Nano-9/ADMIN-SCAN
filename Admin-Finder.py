@@ -113,12 +113,28 @@ else:
 								match = True
 								print("\n\033[1;33m-----------------------------\033[m")
 								print("\033[1;36M[INFO]\033[m \033[1;32mSITE:\033[m \033[1m{}\033[m".format(site))
-								print("\033[1;36M[INFO]\033[m \033[1;32mAdmin Page: :\033[m \033[1m{}\033[m".format(testar))
+								print("\033[1;36M[INFO]\033[m \033[1;32mAdmin Page:\033[m \033[1m{}\033[m".format(testar))
 								print("-----------------------------\033[m\n")
 								with open("Found.txt","a") as save1:
 									save1.write("-----------------\n")
 									save1.write("SITE: {}\n".format(site))
 									save1.write("Página de Adm: {}\n".format(testar))
+									save1.write("Tempo que levei para encontrar: {}\n".format(result))
+									save1.write("-----------------\n")
+									save1.close()
+							elif conectar.status_code == 401:
+								finish = datetime.datetime.now() - start
+								result = str(finish)
+								match = True
+								print("\n\033[1;33m-----------------------------\033[m")
+								print("\033[1;36M[INFO]\033[m \033[1;32mSITE:\033[m \033[1m{}\033[m".format(site))
+								print("\033[1;36M[INFO]\033[m \033[1;32mAdmin Page-Js:\033[m \033[1m{}\033[m".format(testar))
+								print("-----------------------------\033[m\n")
+								with open("Found.txt","a") as save1:
+									save1.write("-----------------\n")
+									save1.write("SITE: {}\n".format(site))
+									save1.write("Página de Adm-Js: {}\n".format(testar))
+									save1.write("Tempo que levei para encontrar: {}\n".format(result))
 									save1.write("-----------------\n")
 									save1.close()
 							else:
@@ -156,10 +172,23 @@ else:
 														print("\033[1;36m[INFO]\033[m \033[1;32mSITE:\033[m \033[1m{}\033[m".format(site))
 														print("\033[1;36m[INFO]\033[m \033[1;32mPossível Admin page:\033[m \033[1m{}\033[m".format(resultado))
 														print("-----------------------------\033[m\n")
-														with open("Sublinks.txt","a") as save2:
+														with open("Found.txt","a") as save2:
 															save2.write("-----------------\n")
 															save2.write("SITE: {}\n".format(site))
 															save2.write("Página de Adm: {}\n".format(resultado))
+															save2.write("-----------------\n")
+															save2.close()
+											elif conectar3.status_code == 401:
+												if "www." not in resultado:
+													if "m." not in resultado:
+														print("\n\033[1;33m-----------------------------\033[m")
+														print("\033[1;36m[INFO]\033[m \033[1;32mSITE:\033[m \033[1m{}\033[m".format(site))
+														print("\033[1;36m[INFO]\033[m \033[1;32mPossível Admin page-Js:\033[m \033[1m{}\033[m".format(resultado))
+														print("-----------------------------\033[m\n")
+														with open("Found.txt","a") as save2:
+															save2.write("-----------------\n")
+															save2.write("SITE: {}\n".format(site))
+															save2.write("Página de Adm-Js: {}\n".format(resultado))
 															save2.write("-----------------\n")
 															save2.close()
 									else:
@@ -172,16 +201,29 @@ else:
 											print("\033[1;32m[{}]\033[m\033[1;31m [403]\033[m\033[1m Site:\033[m \033[1;36m{}\033[m | \033[1mStatus:\033[m \033[1;31mError!\033[m".format(datetime.datetime.now().strftime("%H:%M:%S"),resultado2))
 										else:
 											if conectar4.status_code == 200:
-												if "www." not in resultado:
-													if "m." not in resultado:
+												if "www." not in resultado2:
+													if "m." not in resultado2:
 														print("\n\033[1;33m-----------------------------\033[m")
 														print("\033[1;36m[INFO]\033[m \033[1;32mSITE:\033[m \033[1m{}\033[m".format(site))
-														print("\033[1;36m[INFO]\033[m \033[1;32mPossível Admin page:\033[m \033[1m{}\033[m".format(resultado))
+														print("\033[1;36m[INFO]\033[m \033[1;32mPossível Admin page:\033[m \033[1m{}\033[m".format(resultado2))
 														print("-----------------------------\033[m\n")
-														with open("Sublinks.txt","a") as save3:
+														with open("Found.txt","a") as save3:
 															save3.write("-----------------\n")
 															save3.write("SITE: {}\n".format(site))
-															save3.write("Página de Adm: {}\n".format(resultado))
+															save3.write("Página de Adm: {}\n".format(resultado2))
+															save3.write("-----------------\n")
+															save3.close()
+											elif conectar4.status_code == 401:
+												if "www." not in resultado2:
+													if "m." not in resultado2:
+														print("\n\033[1;33m-----------------------------\033[m")
+														print("\033[1;36m[INFO]\033[m \033[1;32mSITE:\033[m \033[1m{}\033[m".format(site))
+														print("\033[1;36m[INFO]\033[m \033[1;32mPossível Admin page:\033[m \033[1m{}\033[m".format(resultado2))
+														print("-----------------------------\033[m\n")
+														with open("Found.txt","a") as save3:
+															save3.write("-----------------\n")
+															save3.write("SITE: {}\n".format(site))
+															save3.write("Página de Adm: {}\n".format(resultado2))
 															save3.write("-----------------\n")
 															save3.close()
 			
@@ -221,6 +263,22 @@ else:
 											save.write("-----------------\n")
 											save.write("SITE: {}\n".format(site))
 											save.write("Página de Adm: {}\n".format(testar2))
+											save.write("Tempo que levei para encontrar: {}\n".format(results))
+											save.write("-----------------\n")
+											save.close()
+									elif conectar2.status_code == 401:
+										finishs = datetime.datetime.now() - starts
+										results = str(finishs)
+										match = True
+										print("\n\033[1;33m-----------------------------\033[m")
+										print("\033[1;36m[INFO]\033[m \033[1;32mSITE:\033[m \033[1m{}\033[m".format(site))
+										print("\033[1;36m[INFO]\033[m \033[1;32mAdmin Page-Js: :\033[m \033[1m{}\033[m".format(testar2))
+										print("-----------------------------\033[m\n")
+										with open("Found.txt","a") as save:
+											save.write("-----------------\n")
+											save.write("SITE: {}\n".format(site))
+											save.write("Página de Adm: {}\n".format(testar2))
+											save.write("Tempo que levei para encontrar-Js: {}\n".format(results))
 											save.write("-----------------\n")
 											save.close()
 									else:
@@ -244,45 +302,71 @@ else:
 													site_2 = site.replace("www.","")
 													subd = subdominio.replace("\n","")
 													mudar = site_2.split("//")
-													resultado = mudar[0]+"//"+subd+"."+mudar[1]
+													resultado3 = mudar[0]+"//"+subd+"."+mudar[1]
 													try:
-														conectar3 = Persist.get(resultado,headers=headers)
+														conectar3 = Persist.get(resultado3,headers=headers)
 													except requests.exceptions.ConnectionError:
-														print("\033[1;32m[{}]\033[m\033[1;31m [403]\033[m\033[1m Site:\033[m \033[1;36m{}\033[m | \033[1mStatus:\033[m \033[1;31mError!\033[m".format(datetime.datetime.now().strftime("%H:%M:%S"),resultado))
+														print("\033[1;32m[{}]\033[m\033[1;31m [403]\033[m\033[1m Site:\033[m \033[1;36m{}\033[m | \033[1mStatus:\033[m \033[1;31mError!\033[m".format(datetime.datetime.now().strftime("%H:%M:%S"),resultado3))
 													else:
 														if conectar3.status_code == 200:
-															if "www." not in resultado:
-																if "m." not in resultado:
+															if "www." not in resultado3:
+																if "m." not in resultado3:
 																	print("\n\033[1;33m-----------------------------\033[m")
 																	print("\033[1;36m[INFO]\033[m \033[1;32mSITE:\033[m \033[1m{}\033[m".format(site))
-																	print("\033[1;36m[INFO]\033[m \033[1;32mPossível Admin page:\033[m \033[1m{}\033[m".format(resultado))
+																	print("\033[1;36m[INFO]\033[m \033[1;32mPossível Admin page:\033[m \033[1m{}\033[m".format(resultado3))
 																	print("-----------------------------\033[m\n")
-																	with open("Sublinks.txt","a") as save2:
+																	with open("Found.txt","a") as save2:
 																		save2.write("-----------------\n")
 																		save2.write("SITE: {}\n".format(site))
-																		save2.write("Página de Adm: {}\n".format(resultado))
+																		save2.write("Página de Adm: {}\n".format(resultado3))
+																		save2.write("-----------------\n")
+																		save2.close()
+														elif conectar3.status_code == 401:
+															if "www." not in resultado3:
+																if "m." not in resultado3:
+																	print("\n\033[1;33m-----------------------------\033[m")
+																	print("\033[1;36m[INFO]\033[m \033[1;32mSITE:\033[m \033[1m{}\033[m".format(site))
+																	print("\033[1;36m[INFO]\033[m \033[1;32mPossível Admin page-Js:\033[m \033[1m{}\033[m".format(resultado3))
+																	print("-----------------------------\033[m\n")
+																	with open("Found.txt","a") as save2:
+																		save2.write("-----------------\n")
+																		save2.write("SITE: {}\n".format(site))
+																		save2.write("Página de Adm-Js: {}\n".format(resultado3))
 																		save2.write("-----------------\n")
 																		save2.close()
 												else:
 													subd = subdominio.replace("\n","")
 													mudar = site.split("//")
-													resultado2 = mudar[0]+"//"+subd+"."+mudar[1]
+													resultado4 = mudar[0]+"//"+subd+"."+mudar[1]
 													try:
-														conectar4 = Persist.get(resultado2,proxies=proxies)
+														conectar4 = Persist.get(resultado4,proxies=proxies)
 													except requests.exceptions.ConnectionError:
-														print("\033[1;32m[{}]\033[m\033[1;31m [403]\033[m\033[1m Site:\033[m \033[1;36m{}\033[m | \033[1mStatus:\033[m \033[1;31mError!\033[m".format(datetime.datetime.now().strftime("%H:%M:%S"),resultado2))
+														print("\033[1;32m[{}]\033[m\033[1;31m [403]\033[m\033[1m Site:\033[m \033[1;36m{}\033[m | \033[1mStatus:\033[m \033[1;31mError!\033[m".format(datetime.datetime.now().strftime("%H:%M:%S"),resultado4))
 													else:
 														if conectar4.status_code == 200:
-															if "www." not in resultado:
-																if "m." not in resultado:
+															if "www." not in resultado4:
+																if "m." not in resultado4:
 																	print("\n\033[1;33m-----------------------------\033[m")
 																	print("\033[1;36m[INFO]\033[m \033[1;32mSITE:\033[m \033[1m{}\033[m".format(site))
-																	print("\033[1;36m[INFO]\033[m \033[1;32mPossível Admin page:\033[m \033[1m{}\033[m".format(resultado))
+																	print("\033[1;36m[INFO]\033[m \033[1;32mPossível Admin page:\033[m \033[1m{}\033[m".format(resultado4))
 																	print("-----------------------------\033[m\n")
-																	with open("Sublinks.txt","a") as save3:
+																	with open("Found.txt","a") as save3:
 																		save3.write("-----------------\n")
 																		save3.write("SITE: {}\n".format(site))
-																		save3.write("Página de Adm: {}\n".format(resultado))
+																		save3.write("Página de Adm: {}\n".format(resultado4))
+																		save3.write("-----------------\n")
+																		save3.close()
+														elif conectar4.status_code == 401:
+															if "www." not in resultado4:
+																if "m." not in resultado4:
+																	print("\n\033[1;33m-----------------------------\033[m")
+																	print("\033[1;36m[INFO]\033[m \033[1;32mSITE:\033[m \033[1m{}\033[m".format(site))
+																	print("\033[1;36m[INFO]\033[m \033[1;32mPossível Admin page:\033[m \033[1m{}\033[m".format(resultado4))
+																	print("-----------------------------\033[m\n")
+																	with open("Found.txt","a") as save3:
+																		save3.write("-----------------\n")
+																		save3.write("SITE: {}\n".format(site))
+																		save3.write("Página de Adm: {}\n".format(resultado4))
 																		save3.write("-----------------\n")
 																		save3.close()
 

@@ -164,6 +164,8 @@ else:
 											conectar3 = Persist.get(resultado,headers=headers)
 										except requests.exceptions.ConnectionError:
 											print("\033[1;32m[{}]\033[m\033[1;31m [403]\033[m\033[1m Site:\033[m \033[1;36m{}\033[m | \033[1mStatus:\033[m \033[1;31mError!\033[m".format(datetime.datetime.now().strftime("%H:%M:%S"),resultado))
+										except requests.exceptions.InvalidURL:
+											continue
 										else:
 											if conectar3.status_code == 200:
 												if "www." not in resultado:
@@ -307,6 +309,8 @@ else:
 														conectar3 = Persist.get(resultado3,headers=headers)
 													except requests.exceptions.ConnectionError:
 														print("\033[1;32m[{}]\033[m\033[1;31m [403]\033[m\033[1m Site:\033[m \033[1;36m{}\033[m | \033[1mStatus:\033[m \033[1;31mError!\033[m".format(datetime.datetime.now().strftime("%H:%M:%S"),resultado3))
+													except requests.exceptions.InvalidURL:
+														continue
 													else:
 														if conectar3.status_code == 200:
 															if "www." not in resultado3:

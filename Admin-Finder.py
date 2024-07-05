@@ -104,8 +104,7 @@ else:
 							sleep(0.5)
 							sys.exit()
 						except requests.ConnectionError:
-							print("\033[1;31m[!] url indisponível!\033[m")
-							sys.exit()
+							continue
 						else:
 							if conectar.status_code == 200:
 								finish = datetime.datetime.now() - start

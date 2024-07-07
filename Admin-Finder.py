@@ -120,7 +120,7 @@ while True:
 										sys.exit()
 									except requests.ConnectionError:
 										pass
-									except requests.exceptions.InvalidUrl:
+									except requests.exceptions.InvalidURL:
 										pass
 									else:
 										if conectar.status_code == 200:

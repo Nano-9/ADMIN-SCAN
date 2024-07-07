@@ -79,7 +79,7 @@ while True:
 			print("\033[1;31m[!]\033[m \033[1mVerifique se a url digitada está correta! E não esqueça de adicionar -> / no final da url!\033[m\n")
 		else:
 			try:
-				site_teste = Persist.get(site)
+				site_teste = Persist.get(site,headers=headers)
 			except requests.ConnectionError:
 				print("\033[1;31m[!]\033[m \033[1mO Site não está disponível!\033[m\n")
 				sys.exit()

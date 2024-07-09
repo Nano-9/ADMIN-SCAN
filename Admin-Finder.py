@@ -23,7 +23,7 @@ def LimparTela():
 
 def ValidEnter(msg=None):
 
-	validar = re.search(r"^(http://|https://){1}(www\.)?([a-zA-Z0-9\-\_])+.+(\.com/|\.br/|\.ch/|\.edu/|\.su/|\.org/|\.sp/|\.mg/|\.gov/|\.eu/|\.me||\.io/|\.pt/|\.tv/|\.uk/|\.ga/|\.ac/|\.mk/|\.co/|\.id/|\.net/|\.uk/|\.jp/|\.in/|\.vn/|\.tr/|\.tw/|\.info/|\.pk/|\.ng/|\.my/|\.sy/|\.bd/|\.cn/|\.gh/|\.se/|\.cyb|\.bbs/|\.geek/|\.chan/|\.vc/|\.pirate/|\.libre/|\.neo/|\.parody/)$", msg, flags=re.IGNORECASE)
+	validar = re.search(r"^(http://|https://){1}(www\.)?([a-zA-Z0-9\-\_])+.+(\.com/|\.br/|\.ch/|\.edu/|\.su/|\.org/|\.sp/|\.mg/|\.gov/|\.eu/|\.me||\.io/|\.pt/|\.tv/|\.uk/|\.ga/|\.ac/|\.mk/|\.co/|\.id/|\.net/|\.uk/|\.jp/|\.in/|\.vn/|\.tr/|\.tw/|\.info/|\.pk/|\.ng/|\.my/|\.sy/|\.bd/|\.cn/|\.gh/|\.se/|\.cyb|\.bbs/|\.geek/|\.chan/|\.vc/|\.pirate/|\.libre/|\.neo/|\.parody/)(/)$", msg, flags=re.IGNORECASE)
 	if validar != None:
 		return True
 	else:
@@ -77,6 +77,7 @@ while True:
 		verify = ValidEnter(msg=site)
 		if not verify:
 			print("\033[1;31m[!]\033[m \033[1mVerifique se a url digitada está correta! E não esqueça de adicionar -> / no final da url!\033[m\n")
+			sleep(2)
 		else:
 			try:
 				site_teste = Persist.get(site,headers=headers)

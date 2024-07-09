@@ -20,7 +20,7 @@ def BanerAdm():
          :.       .        \    
          . \  .   :   .-'   .   
          '  `+.;  ;  '      :   
-\033[36m         :  '  |    ;       ;-.  \033[1m ➤ Tipos de URL: \033[m\033[1;33mhttps://example.com ou http://example.com \033[m
+\033[36m         :  '  |    ;       ;-.  \033[1m ➤ Tipos de URL: \033[m\033[1;33mhttps://example.com/ ou http://example.com/ \033[m
 \033[36m         ; '   : :`-:     _.`* ;                   \033[m\033[1;4m ➤ www. é opcional! \033[m
 \033[36m     .*' /  .*' ; .*`- +'  `*'  
       `*-*   `*-*  `*-*'                               \033[m\n""")
@@ -37,7 +37,7 @@ def BanerAdm():
          :.       .        \    
          . \  .   :   .-'   .   
          '  `+.;  ;  '      :   
-\033[36m         :  '  |    ;       ;-.  \033[1m ➤ Tipos de URL: \033[m\033[1;33mhttps://example.com ou http://example.com \033[m
+\033[36m         :  '  |    ;       ;-.  \033[1m ➤ Tipos de URL: \033[m\033[1;33mhttps://example.com/ ou http://example.com/ \033[m
 \033[36m         ; '   : :`-:     _.`* ;                   \033[m\033[1;4m ➤ www. é opcional! \033[m
 \033[36m     .*' /  .*' ; .*`- +'  `*'  
       `*-*   `*-*  `*-*'                               \033[m\n""")

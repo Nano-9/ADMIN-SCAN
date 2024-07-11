@@ -120,9 +120,9 @@ while True:
 										sleep(0.5)
 										sys.exit()
 									except requests.ConnectionError:
-										pass
+										continue
 									except requests.exceptions.InvalidURL:
-										pass
+										continue
 									else:
 										if conectar.status_code == 200:
 											finish = datetime.datetime.now() - start
@@ -189,7 +189,7 @@ while True:
 												except requests.exceptions.ConnectionError:
 													print("\033[1;32m[{}]\033[m\033[1;31m [403]\033[m\033[1m Site:\033[m \033[1;36m{}\033[m | \033[1mStatus:\033[m \033[1;31mError!\033[m".format(datetime.datetime.now().strftime("%H:%M:%S"),resultado))
 												except requests.exceptions.InvalidURL:
-													pass
+													continue
 												else:
 													if conectar3.status_code == 200:
 														if "www." not in resultado:
@@ -225,6 +225,8 @@ while True:
 													conectar4 = Persist.get(resultado2,proxies=proxies)
 												except requests.exceptions.ConnectionError:
 													print("\033[1;32m[{}]\033[m\033[1;31m [403]\033[m\033[1m Site:\033[m \033[1;36m{}\033[m | \033[1mStatus:\033[m \033[1;31mError!\033[m".format(datetime.datetime.now().strftime("%H:%M:%S"),resultado2))
+												except requests.exceptions.InvalidURL:
+													continue
 												else:
 													if conectar4.status_code == 200:
 														if "www." not in resultado2:

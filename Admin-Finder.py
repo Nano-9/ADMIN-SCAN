@@ -23,7 +23,7 @@ def LimparTela():
 
 def ValidEnter(msg=None):
 
-	validar = re.search(r"^(http://|https://){1}(www\.)?([a-zA-Z0-9\-\_])+.+(\.com/|\.br/|\.ch/|\.edu/|\.su/|\.org/|\.sp/|\.mg/|\.gov/|\.eu/|\.me||\.io/|\.pt/|\.tv/|\.uk/|\.ga/|\.ac/|\.mk/|\.co/|\.id/|\.net/|\.uk/|\.jp/|\.in/|\.vn/|\.tr/|\.tw/|\.info/|\.pk/|\.ng/|\.my/|\.sy/|\.bd/|\.cn/|\.gh/|\.se/|\.cyb|\.bbs/|\.geek/|\.chan/|\.vc/|\.pirate/|\.libre/|\.neo/|\.parody/)(/)$", msg, flags=re.IGNORECASE)
+	validar = re.search(r"^(http://|https://){1}(www\.)?([a-zA-Z0-9\-\_])+.+(\.com/|\.br/|\.ch/|\.edu/|\.su/|\.sp/|\.mg/|\.gov/|\.eu/|\.me||\.io/|\.pt/|\.tv/|\.uk/|\.ga/|\.ac/|\.mk/|\.co/|\.id/|\.net/|\.uk/|\.jp/|\.in/|\.vn/|\.tr/|\.tw/|\.info/|\.pk/|\.ng/|\.my/|\.sy/|\.bd/|\.cn/|\.gh/|\.se/|\.cyb|\.bbs/|\.geek/|\.chan/|\.vc/|\.pirate/|\.libre/|\.neo/|\.parody/|\.org/)(/)$", msg, flags=re.IGNORECASE)
 	if validar != None:
 		return True
 	else:
@@ -47,7 +47,12 @@ while True:
 	except KeyboardInterrupt:
 		raise SystemExit
 	else:
-
+		name_pasta = site.split("/")
+		os.makedirs(name_pasta[2],exist_ok=True)
+		if sys.platform == "win32":
+			caminho_save_win = str(os.getcwd())+str(r"\\"+name_pasta[2])+r"\\Found.txt"
+		else:
+			caminho_save_lin = str(os.getcwd())+str("/"+name_pasta[2])+"/Found.txt"
 		match = False
 		Found = False
 
@@ -132,13 +137,22 @@ while True:
 											print("\033[1;36M[INFO]\033[m \033[1;32mSITE:\033[m \033[1m{}\033[m".format(site))
 											print("\033[1;36M[INFO]\033[m \033[1;32mAdmin Page:\033[m \033[1m{}\033[m".format(testar))
 											print("-----------------------------\033[m\n")
-											with open("Found.txt","a") as save1:
-												save1.write("-----------------\n")
-												save1.write("SITE: {}\n".format(site))
-												save1.write("Página de Adm: {}\n".format(testar))
-												save1.write("Tempo que levei para encontrar: {}\n".format(result))
-												save1.write("-----------------\n")
-												save1.close()
+											if sys.platform == "win32":
+												with open(caminho_save_win,"a") as save1:
+													save1.write("-----------------\n")
+													save1.write("SITE: {}\n".format(site))
+													save1.write("Página de Adm: {}\n".format(testar))
+													save1.write("Tempo que levei para encontrar: {}\n".format(result))
+													save1.write("-----------------\n")
+													save1.close()
+											else:
+												with open(caminho_save_lin,"a") as save1:
+													save1.write("-----------------\n")
+													save1.write("SITE: {}\n".format(site))
+													save1.write("Página de Adm: {}\n".format(testar))
+													save1.write("Tempo que levei para encontrar: {}\n".format(result))
+													save1.write("-----------------\n")
+													save1.close()
 										elif conectar.status_code == 401:
 											finish = datetime.datetime.now() - start
 											result = str(finish)
@@ -147,13 +161,22 @@ while True:
 											print("\033[1;36M[INFO]\033[m \033[1;32mSITE:\033[m \033[1m{}\033[m".format(site))
 											print("\033[1;36M[INFO]\033[m \033[1;32mAdmin Page-Js:\033[m \033[1m{}\033[m".format(testar))
 											print("-----------------------------\033[m\n")
-											with open("Found.txt","a") as save1:
-												save1.write("-----------------\n")
-												save1.write("SITE: {}\n".format(site))
-												save1.write("Página de Adm-Js: {}\n".format(testar))
-												save1.write("Tempo que levei para encontrar: {}\n".format(result))
-												save1.write("-----------------\n")
-												save1.close()
+											if sys.platform == "win32":
+												with open(caminho_save_win,"a") as save1:
+													save1.write("-----------------\n")
+													save1.write("SITE: {}\n".format(site))
+													save1.write("Página de Adm-Js: {}\n".format(testar))
+													save1.write("Tempo que levei para encontrar: {}\n".format(result))
+													save1.write("-----------------\n")
+													save1.close()
+											else:
+												with open(caminho_save_lin,"a") as save1:
+													save1.write("-----------------\n")
+													save1.write("SITE: {}\n".format(site))
+													save1.write("Página de Adm-Js: {}\n".format(testar))
+													save1.write("Tempo que levei para encontrar: {}\n".format(result))
+													save1.write("-----------------\n")
+													save1.close()
 										else:
 											print("\033[1;33m[{}]\033[m \033[1;31m[{}]\033[m \033[1m{}\033[m".format(datetime.datetime.now().strftime("%H:%M:%S"),conectar.status_code,testar))
 							page.close()
@@ -198,12 +221,20 @@ while True:
 																print("\033[1;36m[INFO]\033[m \033[1;32mSITE:\033[m \033[1m{}\033[m".format(site))
 																print("\033[1;36m[INFO]\033[m \033[1;32mPossível Admin page:\033[m \033[1m{}\033[m".format(resultado))
 																print("-----------------------------\033[m\n")
-																with open("Found.txt","a") as save2:
-																	save2.write("-----------------\n")
-																	save2.write("SITE: {}\n".format(site))
-																	save2.write("Página de Adm: {}\n".format(resultado))
-																	save2.write("-----------------\n")
-																	save2.close()
+																if sys.platform == "win32":
+																	with open(caminho_save_win,"a") as save2:
+																		save2.write("-----------------\n")
+																		save2.write("SITE: {}\n".format(site))
+																		save2.write("Página de Adm: {}\n".format(resultado))
+																		save2.write("-----------------\n")
+																		save2.close()
+																elif sys.platform == "linux":
+																	with open(caminho_save_lin,"a") as save2:
+																		save2.write("-----------------\n")
+																		save2.write("SITE: {}\n".format(site))
+																		save2.write("Página de Adm: {}\n".format(resultado))
+																		save2.write("-----------------\n")
+																		save2.close()
 													elif conectar3.status_code == 401:
 														if "www." not in resultado:
 															if "m." not in resultado:
@@ -211,12 +242,20 @@ while True:
 																print("\033[1;36m[INFO]\033[m \033[1;32mSITE:\033[m \033[1m{}\033[m".format(site))
 																print("\033[1;36m[INFO]\033[m \033[1;32mPossível Admin page-Js:\033[m \033[1m{}\033[m".format(resultado))
 																print("-----------------------------\033[m\n")
-																with open("Found.txt","a") as save2:
-																	save2.write("-----------------\n")
-																	save2.write("SITE: {}\n".format(site))
-																	save2.write("Página de Adm-Js: {}\n".format(resultado))
-																	save2.write("-----------------\n")
-																	save2.close()
+																if sys.platform == "win32":
+																	with open(caminho_save_win,"a") as save2:
+																		save2.write("-----------------\n")
+																		save2.write("SITE: {}\n".format(site))
+																		save2.write("Página de Adm-Js: {}\n".format(resultado))
+																		save2.write("-----------------\n")
+																		save2.close()
+																elif sys.platform == "linux":
+																	with open(caminho_save_lin,"a") as save2:
+																		save2.write("-----------------\n")
+																		save2.write("SITE: {}\n".format(site))
+																		save2.write("Página de Adm-Js: {}\n".format(resultado))
+																		save2.write("-----------------\n")
+																		save2.close()
 											else:
 												subd = subdominio.replace("\n","")
 												mudar = site.split("//")
@@ -235,12 +274,20 @@ while True:
 																print("\033[1;36m[INFO]\033[m \033[1;32mSITE:\033[m \033[1m{}\033[m".format(site))
 																print("\033[1;36m[INFO]\033[m \033[1;32mPossível Admin page:\033[m \033[1m{}\033[m".format(resultado2))
 																print("-----------------------------\033[m\n")
-																with open("Found.txt","a") as save3:
-																	save3.write("-----------------\n")
-																	save3.write("SITE: {}\n".format(site))
-																	save3.write("Página de Adm: {}\n".format(resultado2))
-																	save3.write("-----------------\n")
-																	save3.close()
+																if sys.platform == "win32":
+																	with open(caminho_save_win,"a") as save3:
+																		save3.write("-----------------\n")
+																		save3.write("SITE: {}\n".format(site))
+																		save3.write("Página de Adm: {}\n".format(resultado2))
+																		save3.write("-----------------\n")
+																		save3.close()
+																elif sys.platform == "linux":
+																	with open(caminho_save_win,"a") as save3:
+																		save3.write("-----------------\n")
+																		save3.write("SITE: {}\n".format(site))
+																		save3.write("Página de Adm: {}\n".format(resultado2))
+																		save3.write("-----------------\n")
+																		save3.close()
 													elif conectar4.status_code == 401:
 														if "www." not in resultado2:
 															if "m." not in resultado2:
@@ -248,12 +295,20 @@ while True:
 																print("\033[1;36m[INFO]\033[m \033[1;32mSITE:\033[m \033[1m{}\033[m".format(site))
 																print("\033[1;36m[INFO]\033[m \033[1;32mPossível Admin page:\033[m \033[1m{}\033[m".format(resultado2))
 																print("-----------------------------\033[m\n")
-																with open("Found.txt","a") as save3:
-																	save3.write("-----------------\n")
-																	save3.write("SITE: {}\n".format(site))
-																	save3.write("Página de Adm: {}\n".format(resultado2))
-																	save3.write("-----------------\n")
-																	save3.close()
+																if sys.platform == "win32":
+																	with open(caminho_save_win,"a") as save3:
+																		save3.write("-----------------\n")
+																		save3.write("SITE: {}\n".format(site))
+																		save3.write("Página de Adm: {}\n".format(resultado2))
+																		save3.write("-----------------\n")
+																		save3.close()
+																elif sys.platform == "linux":
+																	with open(caminho_save_win,"a") as save3:
+																		save3.write("-----------------\n")
+																		save3.write("SITE: {}\n".format(site))
+																		save3.write("Página de Adm: {}\n".format(resultado2))
+																		save3.write("-----------------\n")
+																		save3.close()
 									wordlist_2.close()						
 							print("\n\033[1mRetornando ao menu...\033[m")
 							sleep(2)

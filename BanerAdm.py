@@ -5,17 +5,17 @@ system = sys.platform
 
 
 def BanerAdm():
-	""" Baner script """
+      """ Baner script """
 
-	if system == "win32":
-		os.system("cls")
-		print("""\033[36m                                                                       
+      if system == "win32":
+            os.system("cls")
+            print("""\033[36m                                                                       
        \`*-.                    
         )  _`-.                 
         .  : `. .                 \033[31m[*]\033[m\033[1m Scaner Admin Pages in websites\033[m
 \033[36m        : _   '  \                \033[31m[*]\033[m\033[1m Coded by: \033[m\033[1;36mNano\033[m
 \033[36m        ; *` _.   `*-._           \033[31m[*]\033[m\033[1m Telegram: https://t.me/rdzin9\033[m
-\033[36m        `-.-'          `-.        \033[31m[*]\033[m\033[1m Save in: \033[m\033[1;33mFound.txt \033[m
+\033[36m        `-.-'          `-.        \033[31m[*]\033[m\033[1m Save in: \033[m\033[1;33mNa pasta com o nome do site! \033[m
 \033[36m          ;       `       `.     
          :.       .        \    
          . \  .   :   .-'   .   
@@ -24,15 +24,15 @@ def BanerAdm():
 \033[36m         ; '   : :`-:     _.`* ;                   \033[m\033[1;4m ➤ www. é opcional! \033[m
 \033[36m     .*' /  .*' ; .*`- +'  `*'  
       `*-*   `*-*  `*-*'                               \033[m\n""")
-	elif system == "linux":
-		os.system("clear")
-		print("""\033[36m                                                                       
+      elif system == "linux":
+            os.system("clear")
+            print("""\033[36m                                                                       
        \`*-.                    
         )  _`-.                 
         .  : `. .                 \033[31m[*]\033[m\033[1m Scaner Admin Pages in websites\033[m
 \033[36m        : _   '  \                \033[31m[*]\033[m\033[1m Coded by: \033[m\033[1;36mNano\033[m
 \033[36m        ; *` _.   `*-._           \033[31m[*]\033[m\033[1m Telegram: https://t.me/rdzin9\033[m
-\033[36m        `-.-'          `-.        \033[31m[*]\033[m\033[1m Save in: \033[m\033[1;33mFound.txt \033[m
+\033[36m        `-.-'          `-.        \033[31m[*]\033[m\033[1m Save in: \033[m\033[1;33mNa pasta com o nome do site! \033[m
 \033[36m          ;       `       `.     
          :.       .        \    
          . \  .   :   .-'   .   

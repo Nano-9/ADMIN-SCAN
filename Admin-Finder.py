@@ -117,7 +117,7 @@ while True:
 							with open("admin.txt","r") as page:
 								for pages in page:
 									admin_page = pages.replace("\n","")
-									testar = site+admin_page.strip().lower()
+									testar = site+admin_page.strip()
 									try:
 										conectar = Persist.get(testar,headers=headers)
 									except KeyboardInterrupt:

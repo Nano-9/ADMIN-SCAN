@@ -7,6 +7,7 @@ import re
 import requests
 import datetime
 import pathlib
+import threading
 from time import sleep
 from BanerAdm import BanerAdm
 
@@ -23,7 +24,8 @@ def LimparTela():
 
 def ValidEnter(msg=None):
 
-	validar = re.search(r"^(http://|https://){1}(www\.)?([a-zA-Z0-9\-\_])+.+(\.com/|\.br/|\.ch/|\.edu/|\.su/|\.sp/|\.mg/|\.gov/|\.eu/|\.me||\.io/|\.pt/|\.tv/|\.uk/|\.ga/|\.ac/|\.mk/|\.co/|\.id/|\.net/|\.uk/|\.jp/|\.in/|\.vn/|\.tr/|\.tw/|\.info/|\.pk/|\.ng/|\.my/|\.sy/|\.bd/|\.cn/|\.gh/|\.se/|\.cyb|\.bbs/|\.geek/|\.chan/|\.vc/|\.pirate/|\.libre/|\.neo/|\.parody/|\.org/)(/)$", msg, flags=re.IGNORECASE)
+#	validar = re.search(r"^(http://|https://){1}(www\.)?([a-zA-Z0-9\-\_])+.+(\.com/|\.br/|\.ch/|\.edu/|\.su/|\.sp/|\.mg/|\.gov/|\.eu/|\.me||\.io/|\.pt/|\.tv/|\.uk/|\.ga/|\.ac/|\.mk/|\.co/|\.id/|\.net/|\.uk/|\.jp/|\.in/|\.vn/|\.tr/|\.tw/|\.info/|\.pk/|\.ng/|\.my/|\.sy/|\.bd/|\.cn/|\.gh/|\.se/|\.cyb|\.bbs/|\.geek/|\.chan/|\.vc/|\.pirate/|\.libre/|\.neo/|\.parody/|\.org/)(/)$", msg, flags=re.IGNORECASE)
+	validar = re.search(r"^(http://|https://){1}.+(\/)$",msg,flags=re.IGNORECASE)
 	if validar != None:
 		return True
 	else:
@@ -43,7 +45,7 @@ while True:
 	BanerAdm()
 
 	try:
-		site = str(input("\033[1;32m[+]\033[m \033[1mInforme o site alvo:\033[m "))
+		site = str(input("\033[1;32m[+]\033[m \033[1;3mInforme o site alvo:\033[m "))
 	except KeyboardInterrupt:
 		raise SystemExit
 	else:
@@ -98,8 +100,8 @@ while True:
 					BanerAdm()
 					print("""
 
-\033[1;32m[\033[m \033[1;33m1\033[m \033[1;32m]\033[m \033[1m- Usar Wordlist normal\033[m
-\033[1;32m[\033[m \033[1;33m2\033[m \033[1;32m]\033[m \033[1m- Usar Wordlist para Sublinks\033[m
+\033[1;32m[\033[m \033[1;33m1\033[m \033[1;32m]\033[m \033[1;3m- Usar Wordlist normal\033[m
+\033[1;32m[\033[m \033[1;33m2\033[m \033[1;32m]\033[m \033[1;3m- Usar Wordlist para Sublinks\033[m
 						""")
 					try:
 						choices = str(input("\033[132mset\033[m> ")).strip()
@@ -108,18 +110,18 @@ while True:
 					else:
 						if choices == "1":
 							BanerAdm()
-							size = open("admin.txt","r")
+							size = open("WORDLIST/admin.txt","r")
 							wordlist_size = len(size.readlines())
 							print("\n\033[1;36m[*]\033[m \033[1;32mWordlist carregada com\033[m \033[1;33m{}\033[m \033[1;32mtentativas!\033[m".format(wordlist_size))
 							sleep(1)
 							print("\033[1;36m[*] \033[m\033[1;32mIniciado as\033[m \033[1;33m{}\033[m\n".format(datetime.datetime.now().strftime("%H:%M:%S")))
 							start = datetime.datetime.now()
-							with open("admin.txt","r") as page:
+							with open("WORDLIST/admin.txt","r") as page:
 								for pages in page:
 									admin_page = pages.replace("\n","")
 									testar = site+admin_page.strip()
 									try:
-										conectar = Persist.get(testar,headers=headers)
+										conectar = Persist.get(testar,timeout=5,headers=headers)
 									except KeyboardInterrupt:
 										print("[×] Saindo...")
 										sleep(0.5)
@@ -133,10 +135,10 @@ while True:
 											finish = datetime.datetime.now() - start
 											result = str(finish)
 											match = True
-											print("\n\033[1;33m-----------------------------\033[m")
-											print("\033[1;36M[INFO]\033[m \033[1;32mSITE:\033[m \033[1m{}\033[m".format(site))
-											print("\033[1;36M[INFO]\033[m \033[1;32mAdmin Page:\033[m \033[1m{}\033[m".format(testar))
-											print("-----------------------------\033[m\n")
+											print("\033[1;35m-----------------------------\033[m")
+											print("\033[1m[\033[m\033[1;32mINFO\033[m\033[1m]\033[m \033[1m[\033[m\033[1;32m+\033[m\033[1m]\033[m \033[1;36mSITE:\033[m \033[1m{}\033[m".format(site))
+											print("\033[1m[\033[m\033[1;32mINFO\033[m\033[1m]\033[m \033[1m[\033[m\033[1;32m+\033[m\033[1m]\033[m \033[1;36mAdmin Page:\033[m \033[1m{}\033[m".format(testar))
+											print("\033[1;35m-----------------------------\033[m")
 											if sys.platform == "win32":
 												with open(caminho_save_win,"a") as save1:
 													save1.write("-----------------\n")
@@ -157,10 +159,10 @@ while True:
 											finish = datetime.datetime.now() - start
 											result = str(finish)
 											match = True
-											print("\n\033[1;33m-----------------------------\033[m")
-											print("\033[1;36M[INFO]\033[m \033[1;32mSITE:\033[m \033[1m{}\033[m".format(site))
-											print("\033[1;36M[INFO]\033[m \033[1;32mAdmin Page-Js:\033[m \033[1m{}\033[m".format(testar))
-											print("-----------------------------\033[m\n")
+											print("\033[1;35m-----------------------------\033[m")
+											print("\033[1m[\033[m\033[1;32mINFO\033[m\033[1m]\033[m \033[1m[\033[m\033[1;32m+\033[m\033[1m]\033[m \033[1;36mSITE:\033[m \033[1m{}\033[m".format(site))
+											print("\033[1m[\033[m\033[1;32mINFO\033[m\033[1m]\033[m \033[1m[\033[m\033[1;32m+\033[m\033[1m]\033[m \033[1;36mAdmin Page-Js:\033[m \033[1m{}\033[m".format(testar))
+											print("\033[1;35m-----------------------------\033[m")
 											if sys.platform == "win32":
 												with open(caminho_save_win,"a") as save1:
 													save1.write("-----------------\n")
@@ -178,7 +180,7 @@ while True:
 													save1.write("-----------------\n")
 													save1.close()
 										else:
-											print("\033[1;33m[{}]\033[m \033[1;31m[{}]\033[m \033[1m{}\033[m".format(datetime.datetime.now().strftime("%H:%M:%S"),conectar.status_code,testar))
+											print("\033[1m[\033[m\033[36m{}\033[m\033[1m]\033[m \033[1m[\033[m\033[1;31m{}\033[m\033[1m]\033[m\033[m \033[1;32;3mTesting:\033[m \033[3;2m{}\033[m \033[1m[-]\033[m \033[1;31mError\033[m \033[1m[-]\033[m".format(datetime.datetime.now().strftime("%H:%M:%S"),conectar.status_code,testar))
 							page.close()
 						elif choices == "2":
 							try:
@@ -312,3 +314,8 @@ while True:
 									wordlist_2.close()						
 							print("\n\033[1mRetornando ao menu...\033[m")
 							sleep(2)
+
+				else:
+					print("\033[1;31m[!]\033[m\033[1m Não foi possível estabelecer uma conexão com o site alvo...\033[m")
+					print("\033[1;31m[!]\033[m\033[1m Retornando ao menu...\033[m")
+					sleep(1.4)

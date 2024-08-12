@@ -110,13 +110,13 @@ while True:
 					else:
 						if choices == "1":
 							BanerAdm()
-							size = open("WORDLIST/admin.txt","r")
+							size = open("admin.txt","r")
 							wordlist_size = len(size.readlines())
 							print("\n\033[1;36m[*]\033[m \033[1;32mWordlist carregada com\033[m \033[1;33m{}\033[m \033[1;32mtentativas!\033[m".format(wordlist_size))
 							sleep(1)
 							print("\033[1;36m[*] \033[m\033[1;32mIniciado as\033[m \033[1;33m{}\033[m\n".format(datetime.datetime.now().strftime("%H:%M:%S")))
 							start = datetime.datetime.now()
-							with open("WORDLIST/admin.txt","r") as page:
+							with open("admin.txt","r") as page:
 								for pages in page:
 									admin_page = pages.replace("\n","")
 									testar = site+admin_page.strip()

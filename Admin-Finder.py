@@ -85,7 +85,7 @@ while True:
 			sleep(2)
 		else:
 			try:
-				site_teste = Persist.get(site,headers=headers)
+				site_teste = Persist.get(site,timeout=60,headers=headers)
 			except requests.ConnectionError:
 				print("\033[1;31m[!]\033[m \033[1mO Site não está disponível!\033[m\n")
 				sys.exit()

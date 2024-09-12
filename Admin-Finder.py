@@ -151,9 +151,9 @@ class IdentifierHashAndDecrypt:
 									encode_pass = hashlib.md5(transf_pass).hexdigest()
 
 									if encode_pass == self.Hash:
-										print("\033[1;32m[\033[m\033[1;34m+\033[m\033[1;32m]\033[m \033[1m{}  \033[1;33m|\033[m \033[m \033[1;36m{}\033[m".format(encode_pass,senhas))
 										self.finish = datetime.dateime.now() - self.start1
 										print("Tempo até encontrar: {}".format(self.finish))
+										print("\033[1;32m[\033[m\033[1;34m+\033[m\033[1;32m]\033[m \033[1m{}  \033[1;33m|\033[m \033[m \033[1;36m{}\033[m".format(encode_pass,senhas))
 										exit()
 									else:
 										print("\033[1;31m[\033[m\033[1m-\033[m\033[1;31m]\033[m \033[3m{}\033[m  \033[1;33m|\033[m  \033[3m{}\033[m".format(self.Hash,str(encode_pass)))
